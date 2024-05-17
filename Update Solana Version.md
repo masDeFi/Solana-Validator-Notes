@@ -26,10 +26,17 @@ Restart your validator when there is enough time to restart and catchup between 
 ```
 solana-validator --ledger /mnt/ledger/ exit --max-delinquent-stake 5 --min-idle-time 30
 ```
-You
+
 To monitor catchup
 ```
 solana catchup yourValidatorID
+```
+Helpful trouble shooting commands. Customize to your setup.
+```
+grep -B1 'Starting validator with' solana-validator.log
+sudo journalctl -u sol.service -n 200
+systemctl
+systemctl status sol.service 
 ```
 
 
