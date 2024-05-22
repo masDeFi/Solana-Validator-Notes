@@ -16,7 +16,15 @@
 
 ## Quick Reference
 ### Make sure you are on the correct server.
+Seems simple but it's easy to get confused. Just double check.
 
+### Check your leader schedule
+Keep enough time for restart AND catchup. To be extra safe target a window big enough for some troubleshooting.
+
+[MAS DeFi Leader Schedule Tool](https://masdefi.vercel.app/leaderSchedule)
+
+
+### Install new version
 
 This will install the new version, extract, and initialize the new version while the validator is running.
 ```
@@ -26,12 +34,22 @@ Restart your validator when there is enough time to restart and catchup between 
 ```
 solana-validator --ledger /mnt/ledger/ exit --max-delinquent-stake 5 --min-idle-time 30
 ```
+You will see it saving a new snapshot
+```
+⠒ 00:00:10 | Processed Slot: 272322562 | Full Snapshot Slot: 272313893 | Incremental Snapshot Slot: 272322440 | 0.67% delinquent stake | Waiting for a new snapshot    
+```
 
-To monitor catchup
+To monitor catchup(Note: It may take a couple minutes to work. Check the status using other methods in the meantime to ensure the validator restarted succesfully.)
 ```
 solana catchup yourValidatorID
 ```
-Helpful trouble shooting commands. Customize to your setup.
+You're done when catchup displays
+```
+ ... has caught up (us:27232xxxx them:27232xxxx)
+ ```
+ 
+
+### Helpful trouble shooting commands. Customize to your setup.
 ```
 grep -B1 'Starting validator with' solana-validator.log
 sudo journalctl -u sol.service -n 200
@@ -55,34 +73,3 @@ solana-validator exit
 ```
 [7:36](https://youtu.be/HKR5dn5CSZo?si=D9fltFzvEWffFU9P&t=456)\
 Note: You must have systemd setup to auto restart
-
-## Protocol
-1. Double check the version to install
-2. Install
-```
-solana init <version>
-```
-3. Restart with System Service configured to auto start
-```
-solana-validator --ledger /mnt/ledger/ exit --max-delinquent-stake 5 --min-idle-time 5
-```
-will see output like this![wait-for-restart output](image.png)
-4. Confirm restart. Check version, service and catchup
-```
-grep -B1 'Starting validator with' <path/to/logfile>
-
-
-Output:
-[2024-04-28T14:45:49.223542765Z INFO  solana_validator] solana-validator 1.18.12 (src:b9c13825; feat:4215500110, client:SolanaLabs)
-[2024-04-28T14:45:49.223575785Z INFO  solana_validator] Starting validator with: ArgsOs {
-```
-```
-service sol status
-```
-![Sol service status output](image-2.png)
-
-```
-solana catchup <validatorID>
-```
-![Solana Catcup output](image-1.png)
-...CiPEEVwaVexyB has caught up (us:267400896 them:267400906)
