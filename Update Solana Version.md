@@ -21,7 +21,7 @@ Seems simple but it's easy to get confused. Just double check.
 ### Check your leader schedule
 Keep enough time for restart AND catchup. To be extra safe target a window big enough for some troubleshooting.
 
-[MAS DeFi Leader Schedule Tool](https://masdefi.vercel.app/leaderSchedule)
+Use the CLI or [MAS DeFi Leader Schedule Tool](https://masdefi.vercel.app/leaderSchedule)
 
 
 ### Install new version
