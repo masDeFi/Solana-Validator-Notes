@@ -50,25 +50,18 @@ Then follow the setup instructions to enable it for your SSH logins.
 ### 5. Consider a Bastion Host
 (This is hardcore) A bastion host (jump server) acts as an intermediary between your local machine and your validator, reducing direct exposure. Set up a small, hardened server with restricted access to SSH into your validator securely.
 
-## Pro Tips for Solana Validators
-✅ Never expose your validator’s SSH port to the entire internet  
-✅ Regularly rotate SSH keys  
-✅ Disable root login (`PermitRootLogin no` in `/etc/ssh/sshd_config`)  
-✅ Keep your server software updated  
-✅ Monitor logs (`sudo journalctl -u sshd --since today`)  
-
 ## The Real Cost of Security
 
 You might think, “This sounds complicated.” But compare a few hours of setup to potentially losing thousands in staking rewards from a compromised validator. The math is simple.
 
-## Quick Wins Checklist
+## Essentials Checklist
 ✅ Use SSH key authentication  
+✅ Never expose your validator’s SSH port to the entire internet  
 ✅ Implement Fail2Ban  
-✅ Restrict SSH access by IP  
-✅ Enable 2FA  
-✅ Disable root login  
+✅ Restrict SSH access 
+✅ Disable root login (`PermitRootLogin no` in `/etc/ssh/sshd_config`)  
 ✅ Keep systems updated  
-✅ Monitor logs regularly  
+✅ Monitor logs regularly (`sudo journalctl -u sshd --since today`)  
 
 ## Final Thoughts
 Security isn’t a one-time setup—it’s an ongoing process. Regular audits, key rotation, and monitoring keep your validator safe in the long run. Most attackers move on when they see even basic protections in place.
