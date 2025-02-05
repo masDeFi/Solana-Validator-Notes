@@ -58,7 +58,7 @@ You might think, “This sounds complicated.” But compare a few hours of setup
 ✅ Use SSH key authentication  
 ✅ Never expose your validator’s SSH port to the entire internet  
 ✅ Implement Fail2Ban  
-✅ Restrict SSH access 
+✅ Restrict SSH access  
 ✅ Disable root login (`PermitRootLogin no` in `/etc/ssh/sshd_config`)  
 ✅ Keep systems updated  
 ✅ Monitor logs regularly (`sudo journalctl -u sshd --since today`)  
